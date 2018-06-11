@@ -2,6 +2,9 @@
 
 This is a Ubuntu system image for Hikey970 SBC ONLY
 
+## Download
+[Release Page](https://github.com/mengzhuo/hikey970-ubuntu-image/releases)
+
 ## Usage
 
 ```
