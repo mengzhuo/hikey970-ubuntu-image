@@ -17,7 +17,7 @@ rm -f /etc/ssh/ssh_host_*
 dpkg-reconfigure openssh-server
 
 echo "key970" > /etc/hostname
-echo "key970" >> /etc/hosts
+echo "key970 127.0.0.1" >> /etc/hosts
 
 echo "self destroy, bye bye"
 rm /root/init.sh
