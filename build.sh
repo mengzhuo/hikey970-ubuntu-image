@@ -50,7 +50,7 @@ echo "Umount"
 umount build/loop
 
 echo "Building sparse"
-export SPARSE_IMG="ubuntu_$DISTRO.hikey971.$VERSION.sparse.img"
+export SPARSE_IMG="ubuntu_$DISTRO.hikey970.$VERSION.sparse.img"
 img2simg build/rootfs.img build/$SPARSE_IMG
 
 echo "Compressing"
