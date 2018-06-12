@@ -10,6 +10,7 @@ echo "Version:" $VERSION
 REQUIRED="qemu-debootstrap img2simg mkfs.ext4"
 MIRRORS=${MIRRORS:-}
 SOFTWARE=${SOFTWARE:-"ssh,zsh,tmux,linux-firmware,vim-nox,net-tools,network-manager"}
+BLOCK_COUNT=${BLOCK_COUNT:-'16000000'} # 64GB
 
 echo "Fetch from... " $MIRRORS
 echo "Install... " $SOFTWARE
@@ -35,8 +36,9 @@ cp -r rootfs/root/init.sh build/rootfs/root/
 echo "Initial system"
 chroot build/rootfs /root/init.sh
 
+echo "Building image"
 dd if=/dev/zero of=build/rootfs.img bs=1M count=4096
-mkfs.ext4 -F -L rootfs build/rootfs.img
+mkfs.ext4 -F -L rootfs -E resize=$BLOCK_COUNT build/rootfs.img
 
 mkdir build/loop
 mount -o loop build/rootfs.img build/loop
@@ -48,8 +50,13 @@ echo "Umount"
 umount build/loop
 
 echo "Building sparse"
-img2simg build/rootfs.img build/ubuntu_$DISTRO.hikey970.$VERSION.sparse.img
+export SPARSE_IMG="ubuntu_$DISTRO.hikey971.$VERSION.sparse.img"
+img2simg build/rootfs.img $SPARSE_IMG
+
+echo "Compressing"
+tar -C build -czvf $SPARSE_IMG.tar.gz $SPARSE_IMG
 
 echo "ALL COMPLETE"
-ls -lha build/ubuntu_$DISTRO.hikey970.$VERSION.sparse.img
+ls -lha build/$SPARSE_IMG
+sha1sum build/$SPARSE_IMG
 exit 0
