@@ -28,6 +28,7 @@ qemu-debootstrap --arch arm64 --include=$SOFTWARE --components=main,multiverse,u
 
 cp -r rootfs/boot/* build/rootfs/boot/
 cp -r rootfs/etc/netplan/* build/rootfs/etc/netplan/
+cp -r rootfs/etc/rc.local build/rootfs/etc/
 cp -r rootfs/etc/update-motd.d/* build/rootfs/etc/update-motd.d/
 cp -r rootfs/root/init.sh build/rootfs/root/
 
