@@ -51,10 +51,10 @@ umount build/loop
 
 echo "Building sparse"
 export SPARSE_IMG="ubuntu_$DISTRO.hikey971.$VERSION.sparse.img"
-img2simg build/rootfs.img $SPARSE_IMG
+img2simg build/rootfs.img build/$SPARSE_IMG
 
 echo "Compressing"
-tar -C build -czvf $SPARSE_IMG.tar.gz $SPARSE_IMG
+tar -C build -czvf build/$SPARSE_IMG.tar.gz $SPARSE_IMG
 
 echo "ALL COMPLETE"
 ls -lha build/$SPARSE_IMG
