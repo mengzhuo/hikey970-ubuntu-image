@@ -15,7 +15,7 @@ Login
 
 ```
 username: hi
-password: key970
+password: hikey970
 ```
 
 Expend disk (no reboot required)
