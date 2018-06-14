@@ -11,7 +11,7 @@ REQUIRED="qemu-debootstrap img2simg mkfs.ext4"
 MIRRORS=${MIRRORS:-}
 SOFTWARE=${SOFTWARE:-"ssh,zsh,tmux,linux-firmware,vim-nox,net-tools,network-manager"}
 
-SYSTEM_SIZE=${BLOCK_COUNT:-'4096'} # 4G
+SYSTEM_SIZE=${SYSTEM_SIZE:-'4096'} # 4G
 
 echo "Fetch from... " $MIRRORS
 echo "Install... " $SOFTWARE
@@ -37,9 +37,9 @@ cp -r rootfs/root/init.sh build/rootfs/root/
 echo "Initial system"
 chroot build/rootfs /root/init.sh
 
-echo "Building image"
+echo "Building image" $SYSTEM_SIZE
 dd if=/dev/zero of=build/rootfs.img bs=1M count=$SYSTEM_SIZE conv=sparse
-mkfs.ext4 -F -L rootfs -j -J size=256 -E resize=1600000 build/rootfs.img # leave it possible to resize online
+mkfs.ext4 -F -L rootfs build/rootfs.img # leave it possible to resize online
 
 mkdir build/loop
 mount -o loop build/rootfs.img build/loop
