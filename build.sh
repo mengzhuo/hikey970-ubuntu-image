@@ -39,7 +39,7 @@ chroot build/rootfs /root/init.sh
 
 echo "Building image"
 dd if=/dev/zero of=build/rootfs.img bs=1M count=$SYSTEM_SIZE conv=sparse
-mkfs.ext4 -F -L rootfs -j -J size=256 build/rootfs.img # leave it possible to resize online
+mkfs.ext4 -F -L rootfs -j -J size=256 -E resize=1600000 build/rootfs.img # leave it possible to resize online
 
 mkdir build/loop
 mount -o loop build/rootfs.img build/loop
