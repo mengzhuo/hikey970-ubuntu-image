@@ -1,3 +1,13 @@
 network:
  version: 2
- renderer: NetworkManager
+ renderer: networkd
+ ethernets:
+     enp6s0:
+        dhcp4: true
+        dhcp6: true
+# wifis:
+#     wlan0:
+#        access-points:
+#            #NAME:
+#            #password: PASSWORD
+#        dhcp4: true
