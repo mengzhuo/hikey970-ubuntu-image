@@ -9,7 +9,7 @@ echo "Version:" $VERSION
 
 REQUIRED="qemu-debootstrap img2simg mkfs.ext4"
 MIRRORS=${MIRRORS:-}
-SOFTWARE=${SOFTWARE:-"ssh,zsh,tmux,linux-firmware,vim-nox,net-tools,wpasupplicant,network-manager"}
+SOFTWARE=${SOFTWARE:-"ssh,zsh,tmux,linux-firmware,vim-nox,net-tools,wpasupplicant,network-manager,parted"}
 
 SYSTEM_SIZE=${SYSTEM_SIZE:-'1000'} # 1G
 

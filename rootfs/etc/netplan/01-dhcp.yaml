@@ -1,6 +1,6 @@
 network:
  version: 2
- renderer: networkd
+ renderer: NetworkManager
  ethernets:
      enp6s0:
         dhcp4: true
