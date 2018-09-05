@@ -33,7 +33,7 @@ cp -r rootfs/etc/netplan/* build/rootfs/etc/netplan/
 cp -r rootfs/etc/rc.local build/rootfs/etc/
 cp -r rootfs/etc/update-motd.d/* build/rootfs/etc/update-motd.d/
 cp -r rootfs/lib build/rootfs/
-cp -r rootfs/root/init.sh build/rootfs/root/
+cp -r rootfs/root build/rootfs/
 
 echo "Initial system"
 chroot build/rootfs /root/init.sh
