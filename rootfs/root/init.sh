@@ -19,5 +19,9 @@ rm -f /etc/ssh/ssh_host_*
 echo "hikey970" > /etc/hostname
 echo "127.0.0.1 hikey970" >> /etc/hosts
 
+echo "making initramfs"
+cp /root/initramfs-hooks/resize2fs /usr/share/initramfs-tools/hooks/ 
+mkinitramfs -o "/boot/initramfs-v4.9"
+
 echo "self destroy, bye bye"
 rm /root/init.sh
